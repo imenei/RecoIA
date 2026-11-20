@@ -1,0 +1,18 @@
+server:
+  port: 8083
+
+# Base de donnees (utilisee quand spring-boot-starter-data-jpa sera ajoute)
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/activity_db
+    username: ${DB_USER:recoia}
+    password: ${DB_PASSWORD:recoia}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+
+app:
+  reco:
+    grpc-host: localhost
+    grpc-port: 9090

@@ -1,0 +1,19 @@
+server:
+  port: 8081
+
+# Base de donnees (utilisee quand spring-boot-starter-data-jpa sera ajoute)
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/auth_db
+    username: ${DB_USER:recoia}
+    password: ${DB_PASSWORD:recoia}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+
+app:
+  jwt:
+    # A SURCHARGER via variable d'environnement (jamais de vrai secret dans le repo)
+    secret: ${JWT_SECRET:change-me-change-me-change-me-change-me-32b}
+    expiration-minutes: 120

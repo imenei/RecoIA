@@ -1,0 +1,15 @@
+server:
+  port: 8888
+
+spring:
+  application:
+    name: config-server
+  profiles:
+    active: native
+  cloud:
+    config:
+      server:
+        native:
+          # Chemin relatif au dossier du module (services/config-server).
+          # Surchargeable : CONFIG_REPO_PATH=file:/chemin/absolu/config-repo/
+          search-locations: ${CONFIG_REPO_PATH:file:../../config-repo/}

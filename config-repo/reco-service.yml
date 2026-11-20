@@ -1,0 +1,15 @@
+server:
+  port: 8084
+
+# Serveur gRPC (actif quand les dependances gRPC seront ajoutees)
+grpc:
+  server:
+    port: 9090
+
+app:
+  reco:
+    weights:
+      content: 0.5
+      collaborative: 0.3
+      feedback: 0.2
+    top-n-default: 10

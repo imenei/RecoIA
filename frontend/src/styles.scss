@@ -1,0 +1,55 @@
+/* RecoIA : identite visuelle (une seule famille turquoise) */
+:root {
+  --primary: #19CBD8;        /* boutons, badges match, onglet actif */
+  --primary-dark: #0B7F8C;   /* liens, icones, texte colore */
+  --primary-light: #D8F6F8;  /* pastilles, fonds d'icones */
+  --deep: #0B4F5E;           /* boutons sombres, cartes d'accent (texte blanc) */
+  --ink: #0B2C45;            /* texte principal (marine) */
+  --muted: #5B7083;
+  --bg: #E6F9FB;
+  --card: #FFFFFF;
+  --star: #F5B921;           /* uniquement les etoiles */
+  --danger: #EF4444;         /* uniquement "ne me convient pas" / suppression */
+  --radius: 24px;
+  --shadow: 0 8px 24px rgba(11, 127, 140, 0.10);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+h1, h2, h3 { font-family: 'Outfit', 'Inter', sans-serif; margin: 0; color: var(--ink); }
+
+.card {
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.btn {
+  border: 0;
+  border-radius: 999px;
+  padding: 10px 20px;
+  font: 600 14px 'Inter', sans-serif;
+  cursor: pointer;
+  background: var(--primary);
+  color: var(--ink);        /* jamais de blanc sur #19CBD8 */
+}
+.btn:focus-visible { outline: 3px solid var(--primary-dark); outline-offset: 2px; }
+.btn--deep { background: var(--deep); color: #fff; }
+.btn--ghost { background: #fff; border: 2px solid var(--primary); color: var(--primary-dark); }
+
+.tag {
+  display: inline-block;
+  background: var(--primary-light);
+  color: var(--primary-dark);
+  border-radius: 999px;
+  padding: 4px 12px;
+  font-size: 12px;
+  font-weight: 600;
+}

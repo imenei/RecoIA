@@ -1,0 +1,32 @@
+server:
+  port: 8080
+
+spring:
+  cloud:
+    gateway:
+      server:
+        webflux:
+          globalcors:
+            cors-configurations:
+              '[/**]':
+                allowedOrigins:
+                  - "http://localhost:4200"
+                allowedMethods: "*"
+                allowedHeaders: "*"
+          routes:
+            - id: auth-service
+              uri: lb://auth-service
+              predicates:
+                - Path=/api/auth/**
+            - id: catalogue-service
+              uri: lb://catalogue-service
+              predicates:
+                - Path=/api/courses/**, /api/images/**
+            - id: activity-service
+              uri: lb://activity-service
+              predicates:
+                - Path=/api/activity/**, /api/recommendations/**
+            - id: stats-service
+              uri: lb://stats-service
+              predicates:
+                - Path=/graphql, /graphiql

@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package recoia.reco;
+
+option java_package = "dz.recoia.reco.grpc";
+option java_multiple_files = true;
+
+service Recommender {
+  rpc GetRecommendations (RecoRequest) returns (RecoResponse);
+}
+
+message Interaction {
+  int64  course_id = 1;
+  string type      = 2;  // VIEW, RATING, FAVORITE, LIKE, DISLIKE
+  double value     = 3;  // note 1-5, sinon 1.0
+}
+
+message RecoRequest {
+  int64 student_id             = 1;
+  repeated string interests    = 2;
+  repeated Interaction history = 3;
+  int32 top_n                  = 4;
+}
+
+message Recommendation {
+  int64  course_id   = 1;
+  string title       = 2;
+  string image_url   = 3;
+  string category    = 4;
+  double score       = 5;  // 0 a 1
+  string explanation = 6;
+}
+
+message RecoResponse {
+  repeated Recommendation items = 1;
+}
