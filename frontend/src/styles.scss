@@ -10,7 +10,7 @@
   --card: #FFFFFF;
   --star: #F5B921;           /* uniquement les etoiles */
   --danger: #EF4444;         /* uniquement "ne me convient pas" / suppression */
-  --radius: 24px;
+  --radius: 22px;
   --shadow: 0 8px 24px rgba(11, 127, 140, 0.10);
 }
 
@@ -18,7 +18,11 @@
 
 body {
   margin: 0;
-  background: var(--bg);
+  background:
+    radial-gradient(circle at 12% 8%, rgba(255,255,255,.9) 0, rgba(255,255,255,0) 38%),
+    radial-gradient(circle at 92% 95%, rgba(120,225,236,.55) 0, rgba(120,225,236,0) 45%),
+    linear-gradient(135deg, #DFF8FB 0%, #EAFBFD 45%, #CBF1F6 100%);
+  background-attachment: fixed;
   color: var(--ink);
   font-family: 'Inter', system-ui, sans-serif;
 }

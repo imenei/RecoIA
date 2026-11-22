@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package recoia.activity;
+
+option java_multiple_files = true;
+option java_package = "dz.recoia.statsservice.grpc";
+option java_outer_classname = "ActivityProto";
+
+// Statistiques d activite, servies par activity-service et consommees par stats-service.
+service ActivityStats {
+  rpc GetSummary (SummaryRequest) returns (SummaryReply);
+}
+
+message SummaryRequest {
+  int32 limit = 1;               // taille des classements (1 a 50)
+}
+
+message CourseStat {
+  int64 course_id = 1;
+  int64 count = 2;
+}
+
+message Totals {
+  int64 views = 1;
+  int64 recommended = 2;
+  int64 accepted = 3;
+  int64 rejected = 4;
+}
+
+message SummaryReply {
+  Totals totals = 1;
+  repeated CourseStat most_viewed = 2;
+  repeated CourseStat most_recommended = 3;
+  repeated CourseStat most_accepted = 4;
+  repeated CourseStat most_rejected = 5;
+}

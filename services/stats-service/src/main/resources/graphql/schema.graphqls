@@ -1,0 +1,25 @@
+"""Tableau de bord de l'administrateur : activite des etudiants."""
+type Query {
+    dashboard(limit: Int = 10): Dashboard!
+}
+
+type Dashboard {
+    totals: Totals!
+    mostViewed: [CourseStat!]!
+    mostRecommended: [CourseStat!]!
+    mostAccepted: [CourseStat!]!
+    mostRejected: [CourseStat!]!
+}
+
+type Totals {
+    views: Int!
+    recommended: Int!
+    accepted: Int!
+    rejected: Int!
+}
+
+type CourseStat {
+    courseId: Int!
+    title: String
+    count: Int!
+}

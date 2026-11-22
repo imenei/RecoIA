@@ -1,38 +1,65 @@
-import { Component, signal } from '@angular/core';
+import { Component, OnInit, inject, signal } from '@angular/core';
 import { Recommendation, Verdict } from '../../core/models';
+import { AuthService } from '../../core/auth.service';
+import { RecoService } from '../../core/reco.service';
+import { ActivityService } from '../../core/activity.service';
 import { CourseCard } from '../../shared/course-card/course-card';
 
-/** Page "Pour toi". Donnees fictives : remplacer par un appel GET /api/recommendations. */
+/** Page "Mes recommandations" : données réelles de reco-service, avec les boutons de retour. */
 @Component({
   selector: 'app-recommendations-page',
   imports: [CourseCard],
   template: `
-    <h1>Recommandé pour toi</h1>
+    <h1>Mes recommandations</h1>
+    @if (loading()) {
+      <p class="info">Chargement de vos recommandations…</p>
+    } @else if (error()) {
+      <p class="info">Recommandations indisponibles pour le moment. Vérifiez que le serveur est lancé.</p>
+    } @else if (recos().length === 0) {
+      <p class="info">Aucune recommandation pour le moment.</p>
+    }
     <section class="grid">
       @for (r of recos(); track r.course.id) {
-        <app-course-card [reco]="r" (feedback)="onFeedback(r, $event)" />
+        <app-course-card [reco]="r" [showFeedback]="true" (feedback)="onFeedback(r, $event)" />
       }
     </section>
   `,
   styles: `
-    h1 { margin-bottom: 20px; }
-    .grid { display: grid; gap: 20px; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
+    h1 { margin: 24px 0 20px; }
+    .info { opacity: .7; margin-bottom: 16px; }
+    .grid { display: grid; gap: 20px; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); }
   `,
 })
-export class RecommendationsPage {
-  recos = signal<Recommendation[]>([
-    { score: 0.98, rating: 5, explanation: 'Similaire à tes favoris : Python, SQL',
-      course: { id: 1, title: 'Machine Learning avec Python', category: 'Data Science', level: 'Avancé',
-        imageUrl: 'https://picsum.photos/seed/1/400/250' } },
-    { score: 0.95, rating: 4, explanation: 'Apprécié par des étudiants proches de toi',
-      course: { id: 2, title: 'Architecture microservices', category: 'Informatique', level: 'Intermédiaire',
-        imageUrl: 'https://picsum.photos/seed/2/400/250' } },
-    { score: 0.93, rating: 4, explanation: 'Basé sur tes centres d’intérêt : data',
-      course: { id: 3, title: 'Analyse de données métier', category: 'Business', level: 'Débutant',
-        imageUrl: 'https://picsum.photos/seed/3/400/250' } },
-  ]);
+export class RecommendationsPage implements OnInit {
+  private auth = inject(AuthService);
+  private reco = inject(RecoService);
+  private activity = inject(ActivityService);
+
+  recos = signal<Recommendation[]>([]);
+  loading = signal(true);
+  error = signal(false);
+
+  ngOnInit(): void {
+    const id = this.auth.user()?.id;
+    if (id == null) {
+      this.loading.set(false);
+      return;
+    }
+    this.reco.forStudent(id, 12).subscribe({
+      next: r => { this.recos.set(r); this.loading.set(false); },
+      error: e => {
+        console.error('Recommandations indisponibles', e);
+        this.error.set(true);
+        this.loading.set(false);
+      },
+    });
+  }
 
   onFeedback(r: Recommendation, v: Verdict) {
-    console.log('Retour', v, 'sur', r.course.title); // TODO: POST /api/activity/feedback
+    this.activity.feedback(r.course.id, v === 'LIKE').subscribe({
+      next: () => {},
+      error: e => console.error('Retour non enregistré', e),
+    });
   }
+
 }

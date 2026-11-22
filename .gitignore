@@ -1,13 +1,38 @@
-target/
-.idea/
-*.iml
-.vscode/
+# Dépendances et builds
 node_modules/
+target/
 dist/
 .angular/
-.env
-uploads/
-*.log
 __pycache__/
+*.pyc
 .venv/
-data/raw/
+venv/
+
+# Sauvegardes créées pendant le développement
+*.bak
+*.bak[0-9]*
+frontend-old/
+
+# Secrets et configuration locale
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+application-local.yml
+application-local.properties
+
+# Données et fichiers volumineux
+uploads/
+**/uploads/
+*.log
+*.csv
+*.zip
+*.jfif
+
+# IDE et système
+.idea/
+.vscode/
+*.iml
+.DS_Store
+Thumbs.db

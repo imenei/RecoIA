@@ -1,18 +1,22 @@
 server:
   port: 8083
 
-# Base de donnees (utilisee quand spring-boot-starter-data-jpa sera ajoute)
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/activity_db
-    username: ${DB_USER:recoia}
-    password: ${DB_PASSWORD:recoia}
+    username: ${DB_USER:postgres}
+    # meme mot de passe que le catalogue si ACTIVITY_DB_PASSWORD n'est pas defini
+    password: ${ACTIVITY_DB_PASSWORD:${CATALOGUE_DB_PASSWORD:${DB_PASSWORD:}}}
   jpa:
     hibernate:
       ddl-auto: update
     open-in-view: false
+  grpc:
+    server:
+      # serveur gRPC (statistiques pour stats-service) : port different du port HTTP 8083
+      port: 9091
 
 app:
-  reco:
-    grpc-host: localhost
-    grpc-port: 9090
+  jwt:
+    # DOIT etre identique a auth-service et catalogue-service. A surcharger via JWT_SECRET.
+    secret: ${JWT_SECRET:change-me-change-me-change-me-change-me-32b}

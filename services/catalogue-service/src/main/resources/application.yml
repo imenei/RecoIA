@@ -1,5 +1,26 @@
+server:
+  port: 8082
 spring:
   application:
     name: catalogue-service
   config:
-    import: "configserver:http://localhost:8888"
+    import: "optional:configserver:http://localhost:8888"
+  datasource:
+    url: ${CATALOGUE_DB_URL:jdbc:postgresql://localhost:5432/catalogue_db}
+    username: ${CATALOGUE_DB_USER:postgres}
+    password: ${CATALOGUE_DB_PASSWORD:postgres}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+  servlet:
+    multipart:
+      max-file-size: 5MB
+      max-request-size: 10MB
+eureka:
+  client:
+    service-url:
+      defaultZone: ${EUREKA_URL:http://localhost:8761/eureka}
+catalogue:
+  upload-dir: ${CATALOGUE_UPLOAD_DIR:uploads}
+  seed-on-startup: true

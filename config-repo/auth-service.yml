@@ -1,12 +1,12 @@
 server:
   port: 8081
 
-# Base de donnees (utilisee quand spring-boot-starter-data-jpa sera ajoute)
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/auth_db
-    username: ${DB_USER:recoia}
-    password: ${DB_PASSWORD:recoia}
+    username: ${DB_USER:postgres}
+    # meme mot de passe que le catalogue si AUTH_DB_PASSWORD n'est pas defini
+    password: ${AUTH_DB_PASSWORD:${CATALOGUE_DB_PASSWORD:}}
   jpa:
     hibernate:
       ddl-auto: update
@@ -14,6 +14,10 @@ spring:
 
 app:
   jwt:
-    # A SURCHARGER via variable d'environnement (jamais de vrai secret dans le repo)
+    # DOIT etre identique dans l'api-gateway (etape suivante). A surcharger via JWT_SECRET.
     secret: ${JWT_SECRET:change-me-change-me-change-me-change-me-32b}
     expiration-minutes: 120
+  seed-on-empty: true
+  seed:
+    admin-password: ${ADMIN_PASSWORD:Admin123!}
+    student-password: ${STUDENT_PASSWORD:Student123!}

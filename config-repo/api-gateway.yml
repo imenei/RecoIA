@@ -6,6 +6,8 @@ spring:
     gateway:
       server:
         webflux:
+          default-filters:
+            - DedupeResponseHeader=Access-Control-Allow-Origin Access-Control-Allow-Credentials, RETAIN_FIRST
           globalcors:
             cors-configurations:
               '[/**]':
@@ -26,6 +28,10 @@ spring:
               uri: lb://activity-service
               predicates:
                 - Path=/api/activity/**, /api/recommendations/**
+            - id: reco-service
+              uri: lb://reco-service
+              predicates:
+                - Path=/api/reco/**
             - id: stats-service
               uri: lb://stats-service
               predicates:

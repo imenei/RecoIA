@@ -1,16 +1,18 @@
 server:
   port: 8082
 
-# Base de donnees (utilisee quand spring-boot-starter-data-jpa sera ajoute)
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/catalogue_db
-    username: ${DB_USER:recoia}
-    password: ${DB_PASSWORD:recoia}
+    username: ${DB_USER:postgres}
+    password: ${CATALOGUE_DB_PASSWORD:${DB_PASSWORD:}}
   jpa:
     hibernate:
       ddl-auto: update
     open-in-view: false
 
 app:
+  upload-dir: ${UPLOAD_DIR:./uploads}
+
+catalogue:
   upload-dir: ${UPLOAD_DIR:./uploads}

@@ -1,0 +1,95 @@
+<div class="layout">
+  <div class="left">
+    <section class="hero">
+      <div class="hero-text">
+        <h1>Bonjour {{ userName }} !</h1>
+        <p>Découvrez le parcours de formation<br />qui vous correspond grâce à notre IA.</p>
+        <a class="cta" routerLink="/recommandations">Voir mes recommandations <app-icon name="arrow" [size]="18" /></a>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        @if (heroImage()) {
+          <img src="images/hero.png" alt="" (error)="heroImage.set(false)" />
+        } @else {
+          <svg viewBox="0 0 360 220" preserveAspectRatio="xMidYMid meet">
+            <defs>
+              <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#fff" stop-opacity="0.9"/>
+                <stop offset="100%" stop-color="#fff" stop-opacity="0"/>
+              </radialGradient>
+            </defs>
+            <circle cx="190" cy="112" r="110" fill="url(#glow)"/>
+            <g stroke="#fff" stroke-width="1.6" opacity="0.85">
+              @for (e of edges; track $index) {
+                <line [attr.x1]="nodes[e[0]][0]" [attr.y1]="nodes[e[0]][1]" [attr.x2]="nodes[e[1]][0]" [attr.y2]="nodes[e[1]][1]" />
+              }
+            </g>
+            <g fill="#fff" stroke="#19CBD8" stroke-width="2">
+              @for (n of nodes; track $index) { <circle [attr.cx]="n[0]" [attr.cy]="n[1]" r="5" /> }
+            </g>
+          </svg>
+        }
+      </div>
+    </section>
+
+    <section class="stats">
+      @for (s of stats(); track s.label) {
+        <div class="card stat">
+          <span class="ico"><app-icon [name]="s.icon" [size]="28" /></span>
+          <div><div class="val">{{ s.value }}</div><div class="lbl">{{ s.label }}</div></div>
+        </div>
+      }
+    </section>
+
+    <section class="card recos">
+      <div class="recos-head">
+        <h2><span class="spark"><app-icon name="sparkle" [size]="24" /></span> Formations recommandées pour vous</h2>
+        <a routerLink="/recommandations">Voir toutes les recommandations <app-icon name="arrow" [size]="14" /></a>
+      </div>
+      <div class="cards">
+        @for (r of recos(); track r.course.id) { <app-course-card [reco]="r" /> }
+      </div>
+    </section>
+  </div>
+
+  <aside class="right">
+    <section class="card profile">
+      <h3><app-icon name="chart" [size]="22" /> Mon profil</h3>
+      <div class="profile-body">
+        <svg viewBox="0 0 140 140" width="130" height="130" role="img" [attr.aria-label]="'Profil complété à ' + profile().pct + ' pour cent'">
+          <circle cx="70" cy="70" r="55" fill="none" stroke="#D8F6F8" stroke-width="14"/>
+          <circle cx="70" cy="70" r="55" fill="none" stroke="#19CBD8" stroke-width="14" stroke-linecap="round"
+                  [attr.stroke-dasharray]="profile().dash + ' 345.6'" transform="rotate(-90 70 70)"/>
+          <text x="70" y="80" text-anchor="middle" font-family="Outfit, sans-serif" font-size="30" font-weight="700" fill="#0B2C45">{{ profile().pct }}%</text>
+        </svg>
+        <ul>
+          <li><span class="mini"><app-icon name="badge" [size]="18" /></span> Parcours : <b>{{ profile().track }}</b></li>
+          <li><span class="mini"><app-icon name="briefcase" [size]="18" /></span> Intérêts : {{ profile().interests }}</li>
+          <li><span class="mini"><app-icon name="globe" [size]="18" /></span> Langue : <b>{{ profile().language }}</b></li>
+        </ul>
+      </div>
+      <a class="profile-link" routerLink="/profil">Voir mon profil <app-icon name="arrow" [size]="16" /></a>
+    </section>
+
+    <section class="card deadlines">
+      <h3><span class="calico"><app-icon name="bookmark" [size]="20" /></span> Mes favoris</h3>
+      @for (f of recentFavorites(); track f.id) {
+        <div class="row">
+          <div class="date"><app-icon name="bookmark" [size]="18" [filled]="true" /></div>
+          <div class="txt">{{ f.title }}</div>
+          <app-icon name="chevron" [size]="20" />
+        </div>
+      } @empty {
+        <p class="txt">Aucun favori pour le moment. Enregistrez des formations depuis l'explorateur.</p>
+      }
+      <a class="profile-link" routerLink="/favoris">Voir tous mes favoris <app-icon name="arrow" [size]="16" /></a>
+    </section>
+
+    <section class="boost">
+      <div class="cap" aria-hidden="true"><app-icon name="cap" [size]="30" /></div>
+      <div>
+        <p>Boostez votre parcours<br />avec RecoIA !</p>
+        <a class="deep" routerLink="/explorer">Découvrir plus <app-icon name="arrow" [size]="14" /></a>
+      </div>
+    </section>
+  </aside>
+</div>

@@ -6,6 +6,8 @@ export interface Course {
   level: string;
   skills?: string;
   imageUrl: string;
+  durationHours?: number;
+  reviews?: string;     // ex. "2.1k avis"
 }
 
 export interface Recommendation {

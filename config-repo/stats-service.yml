@@ -5,3 +5,16 @@ spring:
   graphql:
     graphiql:
       enabled: true
+  grpc:
+    client:
+      channels:
+        # canal vers le serveur gRPC d'activity-service
+        activity:
+          address: localhost:9091
+
+app:
+  jwt:
+    # DOIT etre identique a auth-service. A surcharger via JWT_SECRET.
+    secret: ${JWT_SECRET:change-me-change-me-change-me-change-me-32b}
+  services:
+    catalogue: http://localhost:8082

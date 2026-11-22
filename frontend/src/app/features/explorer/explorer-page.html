@@ -1,0 +1,74 @@
+<section class="intro">
+  <h1>Explorer mes formations</h1>
+  <p>Découvrez, explorez et trouvez la formation idéale pour atteindre vos objectifs.</p>
+</section>
+
+<section class="card list">
+  <div class="bar">
+    <label class="search">
+      <app-icon name="search" [size]="22" />
+      <input #q type="search" placeholder="Rechercher par mot-clé…" [value]="query()" (input)="setQuery(q.value)" />
+    </label>
+    <button class="filters" [class.on]="panel()" (click)="panel.set(!panel())">
+      <app-icon name="filter" [size]="18" /> Filtres <app-icon name="chevdown" [size]="16" />
+    </button>
+    <label class="sort">Trier par :
+      <select #so (change)="setSort(so.value)">
+        <option value="pertinence">Pertinence</option>
+        <option value="note">Mieux notées</option>
+        <option value="duree">Durée croissante</option>
+      </select>
+    </label>
+  </div>
+
+  @if (panel()) {
+    <div class="panel">
+      <label>Note minimale
+        <select #mr (change)="setMin(mr.value)">
+          <option value="0">Toutes</option>
+          <option value="4.5">4.5 et plus</option>
+          <option value="4.7">4.7 et plus</option>
+          <option value="4.8">4.8 et plus</option>
+        </select>
+      </label>
+    </div>
+  }
+
+  <div class="chips" role="group" aria-label="Niveaux">
+    <button class="chip" [class.on]="!level()" (click)="setLevel('')">Tous</button>
+    @for (n of niveaux; track n) {
+      <button class="chip" [class.on]="level() === n" (click)="setLevel(n)">{{ n }}</button>
+    }
+  </div>
+
+  @if (shown().length) {
+    <div class="grid">
+      @for (f of shown(); track f.id) {
+        <article class="fc">
+          <div class="img" [style.background-image]="'url(' + f.image + ')'">
+            <span class="badge">{{ f.badge }}</span>
+          </div>
+          <div class="body">
+            <h3>{{ f.title }}</h3>
+            <div class="uni"><app-icon name="building" [size]="15" /> {{ f.university }}</div>
+            <div class="meta">
+              <span><i class="star">★</i> {{ f.rating }} ({{ f.reviews }} avis)</span>
+              <span><app-icon name="clock" [size]="15" /> {{ f.hours }}h</span>
+            </div>
+            <div class="foot">
+              <button class="save" [class.on]="saved().includes(f.id)" (click)="toggleSave(f.id)" aria-label="Ajouter aux favoris">
+                <app-icon name="heart" [size]="22" [filled]="saved().includes(f.id)" />
+              </button>
+              <button class="more" (click)="view(f.id)">Voir détails <app-icon name="arrow" [size]="15" /></button>
+            </div>
+          </div>
+        </article>
+      }
+    </div>
+    @if (filtered().length > shown().length) {
+      <div class="more-wrap"><button class="more big" (click)="more()">Afficher plus ({{ filtered().length - shown().length }})</button></div>
+    }
+  } @else {
+    <div class="empty"><h2>{{ emptyTitle() }}</h2><p>{{ emptyHint() }}</p></div>
+  }
+</section>

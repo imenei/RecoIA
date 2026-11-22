@@ -1,0 +1,75 @@
+<div class="page">
+  <header class="nav">
+    <app-logo [size]="26" />
+    <nav class="links" aria-label="Navigation principale">
+      <a class="on" routerLink="/">Accueil</a>
+      <a routerLink="/explorer">Formations</a>
+      <a href="#apropos">À propos</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <div class="nav-r">
+      <button class="round" aria-label="Rechercher"><app-icon name="search" [size]="18" /></button>
+      <a class="login" routerLink="/connexion">Se connecter</a>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="copy">
+      <h1>Trouvez la formation<br />qui vous <span>correspond.</span></h1>
+      <p>Explorez, comparez et accédez aux meilleures formations adaptées à vos objectifs, partout en Algérie.</p>
+      <div class="cta-row">
+        <a class="cta" routerLink="/inscription">Commencer gratuitement <app-icon name="arrow" [size]="18" /></a>
+        <a class="ghost" href="#apropos">En savoir plus <span class="play"><app-icon name="play" [size]="12" [filled]="true" /></span></a>
+      </div>
+    </div>
+
+    <div class="art" aria-hidden="true">
+      <svg viewBox="0 0 520 340" class="laptop">
+        <ellipse cx="260" cy="190" rx="240" ry="80" fill="none" stroke="#9FE6EE" stroke-width="2" transform="rotate(-8 260 190)"/>
+        <ellipse cx="260" cy="190" rx="200" ry="62" fill="none" stroke="#BFEFF4" stroke-width="2" transform="rotate(-8 260 190)"/>
+        <path d="M150 60 L370 40 L390 190 L170 210 Z" fill="#fff" stroke="#0B2C45" stroke-width="8" stroke-linejoin="round"/>
+        <path d="M160 70 L362 52 L378 182 L178 200 Z" fill="#B8F0F5"/>
+        <path d="M240 100 L262 90 L284 100 L262 110 Z" fill="#0B2C45"/>
+        <path d="M248 106 v10 c0 6 28 5 28 -1 v-9 l-14 6 z" fill="#19CBD8"/>
+        <text x="228" y="150" font-family="Outfit, sans-serif" font-weight="700" font-size="30" fill="#0B2C45" transform="rotate(-5 262 140)">Reco<tspan fill="#19CBD8">IA</tspan></text>
+        <path d="M120 232 L420 212 L440 232 L150 252 Z" fill="#E8F6F9" stroke="#BFD9DE" stroke-width="2"/>
+      </svg>
+      @for (b of bubbles; track b.icon) {
+        <span class="bub" [style.left.%]="b.x" [style.top.%]="b.y"><app-icon [name]="b.icon" [size]="26" /></span>
+      }
+    </div>
+  </section>
+
+  <section class="strip" id="apropos">
+    @for (f of features; track f.title) {
+      <div class="feat">
+        <span class="fi"><app-icon [name]="f.icon" [size]="24" /></span>
+        <span>{{ f.title }}@if (f.sub) { <br />{{ f.sub }} }</span>
+      </div>
+    }
+  </section>
+
+  <section class="pop" id="faq">
+    <div class="pop-head">
+      <h2>Formations populaires</h2>
+      <a routerLink="/explorer">Voir toutes les formations <app-icon name="arrow" [size]="14" /></a>
+    </div>
+    <div class="cards">
+      @for (c of popular; track c.title) {
+        <article class="card">
+          <div class="img" [style.background-image]="'url(' + c.image + ')'">
+            <span class="heart"><app-icon name="heart" [size]="20" /></span>
+          </div>
+          <div class="body">
+            <h3>{{ c.title }}</h3>
+            <div class="meta">
+              <span><i>★</i> {{ c.rating }} ({{ c.reviews }} avis)</span>
+              <span><app-icon name="clock" [size]="14" /> {{ c.hours }}h</span>
+              <a class="go" routerLink="/connexion" aria-label="Voir la formation"><app-icon name="arrow" [size]="16" /></a>
+            </div>
+          </div>
+        </article>
+      }
+    </div>
+  </section>
+</div>
