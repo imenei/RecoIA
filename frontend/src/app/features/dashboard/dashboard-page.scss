@@ -73,3 +73,6 @@ h3 { font-size: 18px; display: flex; align-items: center; gap: 10px; }
   .hero-text { max-width: 100%; }
   .hero-visual { opacity: .35; width: 100%; }
 }
+
+/* hero-visual-ia : illustration IA du bandeau */
+.hero-visual { -webkit-mask-image: none; mask-image: none; display: flex; align-items: center; justify-content: flex-end; box-sizing: border-box; padding: 0 24px 0 6%; }

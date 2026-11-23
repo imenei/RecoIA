@@ -43,24 +43,21 @@ interface NavItem {
           <span>Déconnexion</span>
         </button>
       </nav>
+      <svg class="side-art" viewBox="-84 -66 168 122" width="160" aria-hidden="true" style="display:block;margin:22px auto 6px">
+        <line x1="0" y1="-30" x2="0" y2="-42" stroke="#0B2C45" stroke-width="3" stroke-linecap="round"/>
+        <circle cx="0" cy="-47" r="5" fill="#19CBD8"/>
+        <rect x="-40" y="-14" width="8" height="22" rx="3" fill="#19CBD8"/>
+        <rect x="32" y="-14" width="8" height="22" rx="3" fill="#19CBD8"/>
+        <rect x="-34" y="-30" width="68" height="56" rx="16" fill="#0B2C45"/>
+        <circle cx="-14" cy="-6" r="6" fill="#19CBD8"/>
+        <circle cx="14" cy="-6" r="6" fill="#19CBD8"/>
+        <path d="M-10 10 Q0 18 10 10" fill="none" stroke="#19CBD8" stroke-width="3" stroke-linecap="round"/>
+        <rect x="-24" y="30" width="48" height="22" rx="10" fill="#19CBD8"/>
+        <rect x="38" y="-62" width="44" height="28" rx="8" fill="#FFFFFF" stroke="#19CBD8" stroke-width="2"/>
+        <path d="M60 -55 l2 6 6 2 -6 2 -2 6 -2 -6 -6 -2 6 -2z" fill="#19CBD8"/>
+      </svg>
 
       <div class="promo">
-        <svg viewBox="0 0 160 130" width="160" height="130" aria-hidden="true">
-          <defs>
-            <radialGradient id="sg" cx="50%" cy="45%" r="50%">
-              <stop offset="0%" stop-color="#fff" stop-opacity="0.95"/>
-              <stop offset="100%" stop-color="#19CBD8" stop-opacity="0"/>
-            </radialGradient>
-          </defs>
-          <circle cx="80" cy="55" r="52" fill="url(#sg)"/>
-          <g stroke="#19CBD8" stroke-width="1.2" fill="none" opacity="0.9">
-            <polygon points="80,18 108,36 108,70 80,88 52,70 52,36"/>
-            <line x1="80" y1="18" x2="80" y2="88"/><line x1="52" y1="36" x2="108" y2="70"/><line x1="108" y1="36" x2="52" y2="70"/>
-          </g>
-          <g fill="#19CBD8"><circle cx="80" cy="18" r="3"/><circle cx="108" cy="36" r="3"/><circle cx="108" cy="70" r="3"/>
-            <circle cx="80" cy="88" r="3"/><circle cx="52" cy="70" r="3"/><circle cx="52" cy="36" r="3"/><circle cx="80" cy="53" r="3"/></g>
-          <path d="M14 104 Q47 92 80 106 Q113 92 146 104 L146 114 Q113 102 80 116 Q47 102 14 114 Z" fill="#0B2C45"/>
-        </svg>
         <p>Apprendre aujourd’hui,<br />réussir demain</p>
       </div>
     </aside>
