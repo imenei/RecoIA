@@ -16,10 +16,10 @@ export class LandingPage {
   ];
 
   features = [
-    { icon: 'sparkle', title: 'Recommandations', sub: 'IA' },
-    { icon: 'book', title: 'Catalogue complet', sub: '' },
-    { icon: 'chart', title: 'Suivi de progression', sub: '' },
-    { icon: 'badge', title: 'Accès facile', sub: '' },
+    { icon: 'sparkle', title: 'Recommandations IA', sub: 'Un modèle qui comprend le sens de vos centres d’intérêt' },
+    { icon: 'book', title: 'Catalogue complet', sub: 'Plus de 90 formations, de plusieurs universités' },
+    { icon: 'chart', title: 'Suivi de progression', sub: 'Favoris, notes et retours au même endroit' },
+    { icon: 'badge', title: 'Accès sécurisé', sub: 'Compte personnel, données protégées' },
   ];
 
   popular = [

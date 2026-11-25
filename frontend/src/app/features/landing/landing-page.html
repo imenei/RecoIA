@@ -23,28 +23,46 @@
       </div>
     </div>
 
-    <div class="art" aria-hidden="true">
-      <svg viewBox="0 0 520 340" class="laptop">
-        <ellipse cx="260" cy="190" rx="240" ry="80" fill="none" stroke="#9FE6EE" stroke-width="2" transform="rotate(-8 260 190)"/>
-        <ellipse cx="260" cy="190" rx="200" ry="62" fill="none" stroke="#BFEFF4" stroke-width="2" transform="rotate(-8 260 190)"/>
-        <path d="M150 60 L370 40 L390 190 L170 210 Z" fill="#fff" stroke="#0B2C45" stroke-width="8" stroke-linejoin="round"/>
-        <path d="M160 70 L362 52 L378 182 L178 200 Z" fill="#B8F0F5"/>
-        <path d="M240 100 L262 90 L284 100 L262 110 Z" fill="#0B2C45"/>
-        <path d="M248 106 v10 c0 6 28 5 28 -1 v-9 l-14 6 z" fill="#19CBD8"/>
-        <text x="228" y="150" font-family="Outfit, sans-serif" font-weight="700" font-size="30" fill="#0B2C45" transform="rotate(-5 262 140)">Reco<tspan fill="#19CBD8">IA</tspan></text>
-        <path d="M120 232 L420 212 L440 232 L150 252 Z" fill="#E8F6F9" stroke="#BFD9DE" stroke-width="2"/>
-      </svg>
-      @for (b of bubbles; track b.icon) {
-        <span class="bub" [style.left.%]="b.x" [style.top.%]="b.y"><app-icon [name]="b.icon" [size]="26" /></span>
-      }
-    </div>
+    <div class="art">
+  <svg class="reseau" viewBox="0 0 520 340" role="img" aria-label="Un réseau d’intelligence artificielle transforme les centres d’intérêt d’un étudiant en formations recommandées">
+    <defs><polygon id="rn-star" points="0,-7 2,-2.2 7,-2 3.2,1.4 4.4,6.5 0,3.8 -4.4,6.5 -3.2,1.4 -7,-2 -2,-2.2"/></defs>
+    <rect width="520" height="340" rx="28" fill="#E7F6F8"/>
+    <circle cx="40" cy="310" r="70" fill="#D8F6F8"/>
+    <circle cx="490" cy="20" r="60" fill="#D8F6F8"/>
+    <path d="M60 90L150 62M60 90L150 127M60 90L150 193M60 90L150 258M60 170L150 62M60 170L150 127M60 170L150 193M60 170L150 258M60 250L150 62M60 250L150 127M60 250L150 193M60 250L150 258" fill="none" stroke="#8EE3EA" stroke-width="1.6"/>
+    <path d="M150 62L240 95M150 62L240 170M150 62L240 245M150 127L240 95M150 127L240 170M150 127L240 245M150 193L240 95M150 193L240 170M150 193L240 245M150 258L240 95M150 258L240 170M150 258L240 245" fill="none" stroke="#8EE3EA" stroke-width="1.6"/>
+    <path d="M240 95L330 74M240 95L330 170M240 95L330 266M240 170L330 74M240 170L330 170M240 170L330 266M240 245L330 74M240 245L330 170M240 245L330 266" fill="none" stroke="#8EE3EA" stroke-width="1.6"/>
+    <path d="M60 170L150 127L240 170L330 74" fill="none" stroke="#19CBD8" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="60" cy="90" r="15" fill="#0B7F8C"/><circle cx="60" cy="170" r="15" fill="#0B7F8C"/><circle cx="60" cy="250" r="15" fill="#0B7F8C"/>
+    <circle cx="150" cy="62" r="15" fill="#19CBD8"/><circle cx="150" cy="127" r="15" fill="#19CBD8"/><circle cx="150" cy="193" r="15" fill="#19CBD8"/><circle cx="150" cy="258" r="15" fill="#19CBD8"/>
+    <circle cx="240" cy="95" r="15" fill="#0B2C45"/><circle cx="240" cy="170" r="15" fill="#0B2C45"/><circle cx="240" cy="245" r="15" fill="#0B2C45"/>
+    <circle cx="60" cy="170" r="5" fill="#fff"/><circle cx="150" cy="127" r="5" fill="#fff"/><circle cx="240" cy="170" r="5" fill="#fff"/>
+    <rect x="330" y="36" width="170" height="76" rx="10" fill="#fff" stroke="#19CBD8" stroke-width="3"/>
+    <rect x="340" y="46" width="52" height="56" rx="6" fill="#8EE3EA"/>
+    <rect x="402" y="54" width="84" height="8" rx="4" fill="#0B2C45"/>
+    <rect x="402" y="70" width="62" height="6" rx="3" fill="#BFEFF4"/>
+    <use href="#rn-star" x="410" y="92" fill="#F5B921"/><use href="#rn-star" x="428" y="92" fill="#F5B921"/><use href="#rn-star" x="446" y="92" fill="#F5B921"/><use href="#rn-star" x="464" y="92" fill="#F5B921"/><use href="#rn-star" x="482" y="92" fill="#F5B921"/>
+    <rect x="430" y="24" width="60" height="22" rx="11" fill="#19CBD8"/>
+    <path d="M460 29 Q462 36 469 36 Q462 36 460 43 Q458 36 451 36 Q458 36 460 29Z" fill="#fff"/>
+    <rect x="330" y="132" width="170" height="76" rx="10" fill="#fff" stroke="#BFEFF4" stroke-width="2"/>
+    <rect x="340" y="142" width="52" height="56" rx="6" fill="#BFEFF4"/>
+    <rect x="402" y="150" width="84" height="8" rx="4" fill="#0B2C45"/>
+    <rect x="402" y="166" width="62" height="6" rx="3" fill="#BFEFF4"/>
+    <use href="#rn-star" x="410" y="188" fill="#F5B921"/><use href="#rn-star" x="428" y="188" fill="#F5B921"/><use href="#rn-star" x="446" y="188" fill="#F5B921"/><use href="#rn-star" x="464" y="188" fill="#F5B921"/><use href="#rn-star" x="482" y="188" fill="#BFEFF4"/>
+    <rect x="330" y="228" width="170" height="76" rx="10" fill="#fff" stroke="#BFEFF4" stroke-width="2"/>
+    <rect x="340" y="238" width="52" height="56" rx="6" fill="#BFEFF4"/>
+    <rect x="402" y="246" width="84" height="8" rx="4" fill="#0B2C45"/>
+    <rect x="402" y="262" width="62" height="6" rx="3" fill="#BFEFF4"/>
+    <use href="#rn-star" x="410" y="284" fill="#F5B921"/><use href="#rn-star" x="428" y="284" fill="#F5B921"/><use href="#rn-star" x="446" y="284" fill="#F5B921"/><use href="#rn-star" x="464" y="284" fill="#BFEFF4"/><use href="#rn-star" x="482" y="284" fill="#BFEFF4"/>
+  </svg>
+</div>
   </section>
 
   <section class="strip" id="apropos">
     @for (f of features; track f.title) {
       <div class="feat">
         <span class="fi"><app-icon [name]="f.icon" [size]="24" /></span>
-        <span>{{ f.title }}@if (f.sub) { <br />{{ f.sub }} }</span>
+        <div class="txt"><b>{{ f.title }}</b><span>{{ f.sub }}</span></div>
       </div>
     }
   </section>

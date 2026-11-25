@@ -1,6 +1,7 @@
 import { Component, OnDestroy, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { Logo } from '../../shared/logo/logo';
+import { AuthService } from '../../core/auth.service';
 
 /** Ecran de chargement apres connexion : redirige vers le tableau de bord. */
 @Component({
@@ -20,6 +21,7 @@ import { Logo } from '../../shared/logo/logo';
 })
 export class LoadingPage implements OnDestroy {
   private router = inject(Router);
-  private timer = setTimeout(() => this.router.navigate(['/dashboard']), 2200);
+  private auth = inject(AuthService);
+  private timer = setTimeout(() => this.router.navigate([this.auth.isAdmin() ? '/suivi' : '/dashboard']), 2200);
   ngOnDestroy() { clearTimeout(this.timer); }
 }

@@ -14,6 +14,7 @@ import { FavoritesPage } from './features/favorites/favorites-page';
 import { ProfilePage } from './features/profile/profile-page';
 import { AdminPage } from './features/admin/admin-page';
 import { SuiviPage } from './features/admin/suivi-page';
+import { FormationPage } from './features/detail/formation-page';
 import { authGuard } from './core/auth.guard';
 import { adminGuard } from './core/admin.guard';
 
@@ -36,6 +37,7 @@ export const routes: Routes = [
       { path: 'recommandations', component: RecommendationsPage },
       { path: 'explorer', component: ExplorerPage },
       { path: 'favoris', component: FavoritesPage },
+      { path: 'formation/:id', component: FormationPage },
       { path: 'profil', component: ProfilePage },
       { path: 'statistiques', component: PlaceholderPage, data: { title: 'Statistiques' } },
       // Ecran d'administration du catalogue : reserve au role ADMIN

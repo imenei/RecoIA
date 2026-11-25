@@ -53,3 +53,17 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--primary-dark); 
   h1 { font-size: 40px; }
   .links { display: none; }
 }
+
+.art { aspect-ratio: auto; }
+.art svg.reseau { width: 100%; height: auto; display: block; border-radius: 32px; box-shadow: 0 18px 48px rgba(11,127,140,.20); }
+
+/* bande des atouts : pleine largeur, 4 colonnes egales */
+.strip { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px 20px; width: auto; padding: 20px 24px; border-radius: 24px; margin-bottom: 40px; }
+.feat { align-items: flex-start; gap: 14px; padding: 4px 6px; }
+.feat + .feat { border-left: 1px solid rgba(11,44,69,.08); padding-left: 22px; }
+.fi { flex: none; }
+.txt { display: grid; gap: 3px; min-width: 0; }
+.txt b { font-size: 15px; font-weight: 600; color: var(--ink); }
+.txt span { font-size: 13px; line-height: 1.4; font-weight: 400; color: var(--muted); }
+@media (max-width: 1000px) { .strip { grid-template-columns: repeat(2, minmax(0, 1fr)); } .feat + .feat { border-left: 0; padding-left: 6px; } }
+@media (max-width: 560px) { .strip { grid-template-columns: 1fr; } }

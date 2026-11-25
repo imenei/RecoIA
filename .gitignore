@@ -35,4 +35,8 @@ uploads/
 .vscode/
 *.iml
 .DS_Store
-Thumbs.db
+Thumbs.db.angular/
+.venv/
+.env
+*.bak
+*.bak-*

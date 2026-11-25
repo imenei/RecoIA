@@ -46,7 +46,7 @@ interface ApiCourse {
                 <button class="save" (click)="remove(c.id)" aria-label="Retirer des favoris">
                   <app-icon name="bookmark" [size]="22" [filled]="true" />
                 </button>
-                <button class="more" (click)="view(c.id)">Voir détails <app-icon name="arrow" [size]="15" /></button>
+                <a class="more" [routerLink]="['/formation', c.id]">Voir détails <app-icon name="arrow" [size]="15" /></a>
               </div>
             </div>
           </article>

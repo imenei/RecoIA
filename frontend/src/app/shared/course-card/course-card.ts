@@ -5,11 +5,11 @@ import { ActivityStore } from '../../core/activity.store';
 import { MatchBadge } from '../match-badge/match-badge';
 import { RatingStars } from '../rating-stars/rating-stars';
 import { FeedbackButtons } from '../feedback-buttons/feedback-buttons';
-import { Icon } from '../icon/icon';
+import { Icon } from '../icon/icon'; import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-course-card',
-  imports: [MatchBadge, RatingStars, FeedbackButtons, Icon],
+  imports: [MatchBadge, RatingStars, FeedbackButtons, Icon, RouterLink],
   template: `
     <article class="card">
       <div class="img" [style.background-image]="'url(' + reco().course.imageUrl + ')'">
@@ -33,7 +33,7 @@ import { Icon } from '../icon/icon';
         }
         <div class="foot">
           @if (reco().course.durationHours) { <span class="dur"><app-icon name="clock" [size]="16" /> {{ reco().course.durationHours }}h</span> } @else { <span></span> }
-          <button class="more" (click)="view()">Voir détails <app-icon name="arrow" [size]="15" /></button>
+          <a class="more" [routerLink]="['/formation', reco().course.id]">Voir détails <app-icon name="arrow" [size]="15" /></a>
         </div>
       </div>
     </article>
@@ -52,7 +52,7 @@ import { Icon } from '../icon/icon';
     .why { display: flex; gap: 6px; align-items: flex-start; margin: 0; font-size: 12px; color: var(--muted); }
     .foot { display: flex; align-items: center; justify-content: space-between; margin-top: 4px; }
     .dur { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; color: var(--ink); }
-    .more { display: inline-flex; align-items: center; gap: 6px; border: 0; border-radius: 999px;
+    .more { text-decoration: none; display: inline-flex; align-items: center; gap: 6px; border: 0; border-radius: 999px;
       padding: 9px 16px; background: #19D3DF; color: var(--ink); font: 600 13px 'Inter', sans-serif; cursor: pointer; }
     .more:focus-visible, .heart:focus-visible { outline: 3px solid var(--primary-dark); outline-offset: 2px; }
   `,

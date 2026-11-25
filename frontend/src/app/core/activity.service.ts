@@ -32,6 +32,11 @@ export class ActivityService {
     return this.http.delete<void>(`${this.base}/favorites/${courseId}`);
   }
 
+  /** Note de 1 à 5 ; une nouvelle note remplace l'ancienne. */
+  rate(courseId: number, value: number): Observable<void> {
+    return this.http.put<void>(`${this.base}/ratings/${courseId}`, { value });
+  }
+
   view(courseId: number): Observable<void> {
     return this.http.post<void>(`${this.base}/views/${courseId}`, {});
   }

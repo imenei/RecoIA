@@ -49,3 +49,4 @@ h3 { font-size: 16px; line-height: 1.25; min-height: 40px; }
 button:focus-visible, select:focus-visible { outline: 3px solid var(--primary-dark); outline-offset: 2px; }
 
 @media (max-width: 800px) { h1 { font-size: 28px; } }
+a.more { text-decoration: none; }

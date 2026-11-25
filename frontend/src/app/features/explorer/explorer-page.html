@@ -59,7 +59,7 @@
               <button class="save" [class.on]="saved().includes(f.id)" (click)="toggleSave(f.id)" aria-label="Ajouter aux favoris">
                 <app-icon name="heart" [size]="22" [filled]="saved().includes(f.id)" />
               </button>
-              <button class="more" (click)="view(f.id)">Voir détails <app-icon name="arrow" [size]="15" /></button>
+              <a class="more" [routerLink]="['/formation', f.id]">Voir détails <app-icon name="arrow" [size]="15" /></a>
             </div>
           </div>
         </article>

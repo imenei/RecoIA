@@ -71,7 +71,7 @@ import { Icon } from '../../shared/icon/icon';
     </section>
   `,
   styles: `
-    h1 { margin: 24px 0 4px; }
+    :host { display: block; max-width: 760px; margin: 0 auto; } h1 { margin: 24px 0 4px; }
     .sub { margin: 0 0 20px; color: var(--muted); }
     .card { background: #fff; border-radius: 18px; padding: 28px; display: grid; gap: 20px; max-width: 760px; }
     .avatar { width: 64px; height: 64px; border-radius: 50%; display: grid; place-items: center;

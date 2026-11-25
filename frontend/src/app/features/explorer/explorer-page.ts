@@ -2,6 +2,7 @@ import { Component, computed, inject, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Formation, NIVEAUX } from '../../core/mock-courses';
 import { Icon } from '../../shared/icon/icon';
+import { RouterLink } from '@angular/router';
 import { ActivityService } from '../../core/activity.service';
 import { ActivityStore } from '../../core/activity.store';
 
@@ -25,7 +26,7 @@ type Sort = 'pertinence' | 'note' | 'duree';
 
 @Component({
   selector: 'app-explorer-page',
-  imports: [Icon],
+  imports: [Icon, RouterLink],
   templateUrl: './explorer-page.html',
   styleUrl: './explorer-page.scss',
 })
